@@ -47,6 +47,8 @@ public class MyRunner implements ApplicationRunner {
 
         System.out.println("${myboot.name} = " + name);
         System.out.println("${myboot.age} = " + age);
+        System.out.println("${myboot.fullName} = " + environment.getProperty("myboot.fullName"));
+
 
 
     }
