@@ -13,5 +13,8 @@ public class MyRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("MyRunner run() 호출됨!!");
+        System.out.println("Application Name = " + applicationName);
+
+        args.getOptionNames().forEach(name -> System.out.println("name = " + name));
     }
 }
