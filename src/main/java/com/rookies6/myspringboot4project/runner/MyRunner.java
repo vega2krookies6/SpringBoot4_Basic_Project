@@ -1,5 +1,6 @@
 package com.rookies6.myspringboot4project.runner;
 
+import com.rookies6.myspringboot4project.property.MyBootProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -22,6 +23,9 @@ public class MyRunner implements ApplicationRunner {
 
     @Autowired
     private Environment environment;
+
+    @Autowired
+    private MyBootProperties properties;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -49,6 +53,9 @@ public class MyRunner implements ApplicationRunner {
         System.out.println("${myboot.age} = " + age);
         System.out.println("${myboot.fullName} = " + environment.getProperty("myboot.fullName"));
 
+        System.out.println("MyBootProperties getName() = " + properties.getName());
+        System.out.println("MyBootProperties getAge() = " + properties.getAge());
+        System.out.println("MyBootProperties getFullName() = " + properties.getFullName());
 
 
     }
