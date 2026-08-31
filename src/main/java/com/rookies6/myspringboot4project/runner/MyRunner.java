@@ -12,6 +12,12 @@ public class MyRunner implements ApplicationRunner {
     @Value("${spring.application.name}")
     String applicationName;
 
+    @Value("${myboot.name}")
+    private String name;
+
+    @Value("${myboot.age}")
+    private int age;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("MyRunner run() 호출됨!!");
