@@ -1,8 +1,10 @@
 package com.rookies6.myspringboot4project.runner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;
@@ -17,6 +19,9 @@ public class MyRunner implements ApplicationRunner {
 
     @Value("${myboot.age}")
     private int age;
+
+    @Autowired
+    private Environment environment;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -39,5 +44,10 @@ public class MyRunner implements ApplicationRunner {
 
         //Consumer 인터페이스를 Method Reference 로 표현
         args.getOptionNames().forEach(System.out::println);
+
+        System.out.println("${myboot.name} = " + name);
+        System.out.println("${myboot.age} = " + age);
+
+
     }
 }
