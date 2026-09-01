@@ -58,15 +58,15 @@ public class MyRunner implements ApplicationRunner {
         //Consumer 인터페이스를 Method Reference 로 표현
         args.getOptionNames().forEach(System.out::println);
 
-        System.out.println("${myboot.name} = " + name);
-        System.out.println("${myboot.age} = " + age);
-        System.out.println("${myboot.fullName} = " + environment.getProperty("myboot.fullName"));
+        logger.debug("${myboot.name} = {}", name);
+        logger.debug("${myboot.age} = {}", age);
+        logger.debug("${myboot.fullName} = {}", environment.getProperty("myboot.fullName"));
 
-        System.out.println("MyBootProperties getName() = " + properties.getName());
-        System.out.println("MyBootProperties getAge() = " + properties.getAge());
-        System.out.println("MyBootProperties getFullName() = " + properties.getFullName());
+        logger.info("MyBootProperties getName() = {}", properties.getName());
+        logger.info("MyBootProperties getAge() = {}", properties.getAge());
+        logger.info("MyBootProperties getFullName() = {}", properties.getFullName());
 
-        System.out.println("현재 활성화 되어있는 CustomVO= " + customVO);
+        logger.debug("현재 활성화 되어있는 CustomVO= {}", customVO);
 
 
     }
