@@ -1,5 +1,6 @@
 package com.rookies6.myspringboot4project.runner;
 
+import com.rookies6.myspringboot4project.config.CustomVO;
 import com.rookies6.myspringboot4project.property.MyBootProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +27,9 @@ public class MyRunner implements ApplicationRunner {
 
     @Autowired
     private MyBootProperties properties;
+
+    @Autowired
+    private CustomVO customVO;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -56,6 +60,8 @@ public class MyRunner implements ApplicationRunner {
         System.out.println("MyBootProperties getName() = " + properties.getName());
         System.out.println("MyBootProperties getAge() = " + properties.getAge());
         System.out.println("MyBootProperties getFullName() = " + properties.getFullName());
+
+        System.out.println("현재 활성화 되어있는 CustomVO= " + customVO);
 
 
     }
