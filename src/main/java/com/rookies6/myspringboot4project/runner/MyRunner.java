@@ -37,8 +37,9 @@ public class MyRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        logger.info("Logger 구현체 클래스명 {}", logger.getClass().getName());
         logger.debug("MyRunner run() 호출됨!!");
-        System.out.println("Application Name = " + applicationName);
+        logger.debug("Application Name = {}", applicationName);
 
         //Consumer 인터페이스를 Anonymous Inner Class 로 표현
         args.getOptionNames().forEach(new Consumer<String>() {
