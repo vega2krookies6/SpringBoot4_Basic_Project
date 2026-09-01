@@ -2,6 +2,8 @@ package com.rookies6.myspringboot4project.runner;
 
 import com.rookies6.myspringboot4project.config.CustomVO;
 import com.rookies6.myspringboot4project.property.MyBootProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -31,9 +33,11 @@ public class MyRunner implements ApplicationRunner {
     @Autowired
     private CustomVO customVO;
 
+    private Logger logger = LoggerFactory.getLogger(MyRunner.class);
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("MyRunner run() 호출됨!!");
+        logger.debug("MyRunner run() 호출됨!!");
         System.out.println("Application Name = " + applicationName);
 
         //Consumer 인터페이스를 Anonymous Inner Class 로 표현
