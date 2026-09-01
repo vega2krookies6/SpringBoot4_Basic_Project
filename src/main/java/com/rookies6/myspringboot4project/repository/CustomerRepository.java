@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface CustomerRepository extends JpaRepository<Customer,Long> {
     //finder(query) method
-    //1. customerId(고객번호, Unique이므로 중복허용않함)로 조회하는 finder 메서드
+    //1. customerId(고객번호, Unique이`므로 중복허용않함)로 조회하는 finder 메서드
     Optional<Customer> findByCustomerId(String customerId);
 
     //2. customerName(고객명, 중복허용함)로 조회하는 finder 메서드 % name %
