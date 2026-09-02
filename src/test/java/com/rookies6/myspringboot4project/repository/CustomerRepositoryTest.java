@@ -40,4 +40,13 @@ class CustomerRepositoryTest {
         //ifPresent(Consumer) Consumer의 추상메서드 void accept(T t)
         optionalCustomer.ifPresent(customer -> System.out.println(customer.getCustomerName()));
     }
+
+    @Test
+    void testFindByNotFound() {
+        //Optional의 orElseGet(Supplier) Supplier의 추상메서드 T get()  () -> T
+        // orElseThrow(Supplier) 사용 X get()  () -> X  ==> X extends Throwable
+        customerRepository.findByCustomerId("B001")//Optional<Customer>
+                .orElseGet(() -> new Customer());
+        ;
+    }
 }
