@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@Transactional
+//@Transactional
 class CustomerRepositoryTest {
     @Autowired
     CustomerRepository customerRepository;
@@ -64,7 +64,9 @@ class CustomerRepositoryTest {
     void testUpdate() {
         Customer customer = customerRepository.findByCustomerId("A004")
                 .orElseGet(() -> new Customer());
-        customer.setCustomerName("김둘리");
-        assertThat(customer.getCustomerName()).isEqualTo("김둘리");
+        //Setter 호출 EntityManager가 Dirty Checking을 한다.
+        customer.setCustomerName("박둘리");
+        Customer updatedCustomer = customerRepository.save(customer);
+        assertThat(updatedCustomer.getCustomerName()).isEqualTo("박둘리");
     }
 }
