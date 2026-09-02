@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
+//에러처리를 수행하는 공통 Advice 클래스
 @RestControllerAdvice
 @Slf4j
 public class DefaultExceptionAdvice {
@@ -19,8 +20,8 @@ public class DefaultExceptionAdvice {
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorObject> handleResourceNotFoundException(BusinessException ex) {
         ErrorObject errorObject = new ErrorObject();
-        errorObject.setStatusCode(ex.getHttpStatus().value());
-        errorObject.setMessage(ex.getMessage());
+        errorObject.setStatusCode(ex.getHttpStatus().value()); //404
+        errorObject.setMessage(ex.getMessage()); //User Not Found
 
         log.error(ex.getMessage(), ex);
 
