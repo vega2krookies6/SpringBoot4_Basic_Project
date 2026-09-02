@@ -37,5 +37,7 @@ class CustomerRepositoryTest {
             Customer existCustomer = optionalCustomer.get();
             assertThat(existCustomer.getId()).isEqualTo(1L);
         }
+        //ifPresent(Consumer) Consumer의 추상메서드 void accept(T t)
+        optionalCustomer.ifPresent(customer -> System.out.println(customer.getCustomerName()));
     }
 }
