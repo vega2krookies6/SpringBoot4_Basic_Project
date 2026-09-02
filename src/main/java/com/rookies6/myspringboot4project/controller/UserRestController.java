@@ -5,10 +5,9 @@ import com.rookies6.myspringboot4project.repository.CustomerRepository;
 import com.rookies6.myspringboot4project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -28,6 +27,12 @@ public class UserRestController {
         return userRepository.save(userDetail);
     }
 
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);//Optional<User>
+        User existUser = optionalUser.orElseThrow();
+        return existUser;
+    }
 
 
 }
