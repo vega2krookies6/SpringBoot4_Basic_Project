@@ -64,5 +64,7 @@ class CustomerRepositoryTest {
     void testUpdate() {
         Customer customer = customerRepository.findByCustomerId("A004")
                 .orElseGet(() -> new Customer());
+        customer.setCustomerName("김둘리");
+        assertThat(customer.getCustomerName()).isEqualTo("김둘리");
     }
 }
