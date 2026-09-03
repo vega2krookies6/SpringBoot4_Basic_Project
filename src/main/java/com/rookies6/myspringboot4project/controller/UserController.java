@@ -29,5 +29,10 @@ public class UserController {
         return new ModelAndView("index","users",userList);
     }
 
+    @GetMapping("/signup")
+    public String showSignUpForm() {
+        return "add-user";
+    }
+
 
 }
