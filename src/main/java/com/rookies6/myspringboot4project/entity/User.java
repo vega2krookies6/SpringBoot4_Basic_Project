@@ -20,7 +20,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "Name(이름)은 필수 입력 항목입니다.")
     private String name;
 
     @Column(unique = true, nullable = false)
