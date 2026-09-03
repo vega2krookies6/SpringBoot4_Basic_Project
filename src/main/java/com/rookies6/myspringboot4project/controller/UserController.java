@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,5 +51,26 @@ public class UserController {
         return "index";
 //        return "redirect:/index";
     }
+
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("userForm", user);
+        return "update-user";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable("id") long id,
+                             @Valid @ModelAttribute("userForm") User user,
+                             BindingResult result) {
+        if (result.hasErrors()) {
+            user.setId(id);
+            return "update-user";
+        }
+        userRepository.save(user);
+        return "redirect:/index";
+    }
+
 
 }
