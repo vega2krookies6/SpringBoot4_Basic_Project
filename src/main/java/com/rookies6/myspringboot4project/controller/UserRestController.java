@@ -31,7 +31,7 @@ public class UserRestController {
     }
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
+    public User getUserById(@PathVariable Long id) {
         Optional<User> optionalUser = userRepository.findById(id);//Optional<User>
         //orElseThrow(Supplier) Supplier의 추상메서드 () -> T
         User existUser = optionalUser.orElseThrow(
@@ -42,6 +42,11 @@ public class UserRestController {
     @GetMapping
     public List<User> getUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping("/{email}/")
+    public User getUserByEmail(@PathVariable String email){
+
     }
 
 }
