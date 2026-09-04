@@ -26,6 +26,7 @@ public class UserInfoUserDetailsService implements UserDetailsService {
     }
 
     public String addUser(UserInfo userInfo) {
+        //password 인코딩하기
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         UserInfo savedUserInfo = repository.save(userInfo);
         return savedUserInfo.getName() + " user added!!";
