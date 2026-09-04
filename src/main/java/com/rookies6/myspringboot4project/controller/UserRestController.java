@@ -71,4 +71,9 @@ public class UserRestController {
         userRepository.delete(existUser);
         return ResponseEntity.ok("Id = " + id + " User가 삭제 되었습니다.");
     }
+
+    @GetMapping("/welcome")
+    public String welcome() {
+        return "Welcome this endpoint is not secure";
+    }
 }
