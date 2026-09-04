@@ -28,6 +28,12 @@ public class UserInfoUserDetails implements UserDetails {
                 .collect(Collectors.toList());
     }
 
+    /*
+        ROLE_ADMIN,ROLE_USER 문자열  콤마를 기준으로 Split 하면 Array가 생성됨
+        Array로 Stream 객체를 생성함
+        Stream<String> => Stream<SimpleGrantedAuthority> => List<GrantedAuthority>
+     */
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
