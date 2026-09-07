@@ -29,6 +29,8 @@ public class StreamTest {
                 .map(name -> name.toUpperCase())
                 //.map(String::toUpperCase)          	// ② 중간 연산 - 대문자로 변환
                 .toList();                         	// ③ 최종 연산 - List 로 수집 Stream<String> => List<String>
+
+        
         System.out.println(result2);
         // 결과 : [ALICE, CHARLIE, DIANA]
 
