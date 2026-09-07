@@ -25,6 +25,7 @@ public class StudentService {
                 //Stream<Student> => Stream<StudentDTO.Response>
                 .map(entity -> StudentDTO.Response.fromEntity(entity))
                 //.map(StudentDTO.Response::fromEntity)
+                //Stream<StudentDTO.Response> => List<StudentDTO.Response>
                 .toList();
     }
 
@@ -68,7 +69,7 @@ public class StudentService {
                 .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
                         "Student", "id", id));
 
-        // 저장된 학번과 요청한 학번이 일치하지 않으면
+        // 저장된 학번(student.getStudentNumber())과 요청한 학번(request.getStudentNumber())이 일치하지 않으면
         if (!student.getStudentNumber().equals(request.getStudentNumber()) &&
                 //요청한 학번이 중복되는지 체크하기 위해서 해당학번으로 Student 조회
                 studentRepository.existsByStudentNumber(request.getStudentNumber())) {
@@ -81,8 +82,9 @@ public class StudentService {
         student.setStudentNumber(request.getStudentNumber());
 
         // Save and return updated student
-        Student updatedStudent = studentRepository.save(student);
-        return StudentDTO.Response.fromEntity(updatedStudent);
+//        Student updatedStudent = studentRepository.save(student);
+//        return StudentDTO.Response.fromEntity(updatedStudent);
+        return StudentDTO.Response.fromEntity(student);
     }
 
     @Transactional
