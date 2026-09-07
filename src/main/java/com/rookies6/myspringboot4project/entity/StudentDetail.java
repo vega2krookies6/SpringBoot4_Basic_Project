@@ -36,6 +36,7 @@ public class StudentDetail {
     //1:1 지연로딩
     @OneToOne(fetch = FetchType.LAZY)
     //@JoinColumn은 FK(외래키)에 해당하는 어노테이션
+    //Fk를 가진 StudentDetail 객체가 주인(Owner)이다.
     @JoinColumn(name = "student_id", unique = true)
     private Student student;
 }
