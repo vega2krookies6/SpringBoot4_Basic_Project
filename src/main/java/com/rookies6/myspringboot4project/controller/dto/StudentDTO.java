@@ -2,6 +2,7 @@ package com.rookies6.myspringboot4project.controller.dto;
 
 import com.rookies6.myspringboot4project.entity.Student;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -45,6 +46,7 @@ public class StudentDTO {
         private String phoneNumber;
 
         @Size(max = 100, message = "Email cannot exceed 100 characters")
+        @Email
         private String email;
 
         private LocalDate dateOfBirth;
