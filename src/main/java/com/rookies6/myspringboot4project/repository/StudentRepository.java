@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 //StudentRepository 인터페이스
@@ -18,7 +19,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT s FROM Student s LEFT JOIN FETCH s.studentDetail WHERE s.studentNumber = :studentNumber")
     Optional<Student> findByStudentNumber(@Param("studentNumber") String studentNumber);
 
-
     boolean existsByStudentNumber(String studentNumber);
 
     //PK로 조회
@@ -26,5 +26,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT s FROM Student s LEFT JOIN FETCH s.studentDetail WHERE s.id = :id")
     Optional<Student> findByIdWithStudentDetail(@Param("id") Long id);
 
+    //전체 목록을 상세정보와 함께 조회한다 ( findAll() 의 N+1 문제를 해결 )
+    @Query("SELECT s FROM Student s LEFT JOIN FETCH s.studentDetail")
+    List<Student> findAllWithStudentDetail();
 
 }
