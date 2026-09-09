@@ -95,6 +95,8 @@ public class DataInitRunner implements CommandLineRunner {
                 .studentDetail(detail8)
                 .build();
 
+        detail8.setStudent(student8);
+
         List<Student> students = studentRepository.saveAll(
                 List.of(student1, student2, student3, student4, student5, student6, student7, student8)
         );
